@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>知识传播-tarqat.com</title>
+	<link rel="shortcut icon" href="tpl/img/favicon.ico" />
+    <link rel="stylesheet" href="tpl/font/iconfont.css"/>
+	<link rel="stylesheet" href="tpl/css/commun.css" />
+	<link rel="stylesheet" href="tpl/css/index.css" />
+</head>
+<body>
+<!-- header -->
+<div class="header">
+	<div class="w1170 header_box">
+		<div class="left_log">
+            <a href=""><img src="tpl/img/index_logo.png" alt="" /></a>
+            <p>知识传播</p>
+		</div>
+		<div class="right_log">
+			<?php if(!isset($_SESSION["name"])): ?>
+			<a href="index.php?c=Member&a=login" class="use">登录</a>
+			<a href="index.php?c=Member&a=reg" class="use">注册</a>
+		<?php else: ?>
+			<span>欢迎<i style="color:#26ba60;font-style: normal;">&nbsp;<?php echo $_SESSION["name"]; ?>&nbsp;</i>回来!</span>
+			<a class="out" href="index.php?c=Member&a=out">退出</a>
+		<?php endif ?>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<!-- body -->
+<div class="body">
+	<div class="w1170 body_box">
+		<div class="left_content">
+
+			<div class="content_box">
+				<div class="awatar">
+					<div class="img" style="background:url('tpl/img/awatar.png');background-size: 100% 100%;">
+						<div class="cover">T</div>
+					</div>
+					<p>铁打的新疆人</p>
+				</div>
+				<div class="content">
+					朋友聚会聊起了高中往事，提到那时学生流行手写情书 ，往往要苦思冥想很久才写出一篇，还是现在方便，用微信发封情书分分钟的事儿。一哥们立马接口:“心碎的速度也更快!”众人问为啥？他说:“被回绝得更快了呗！”
+				</div>
+				<div class="info">
+					<a class="good"  href="avascript:void(0);"><i class="icon iconfont">&#xe717;</i>有用(10)</a>
+					<a class="notgood"  href="avascript:void(0);"><i class="icon iconfont">&#xe716;</i>没用(2)</a>
+					<a class="time" href="avascript:void(0);"><i class="icon iconfont">&#xe61b;</i>&nbsp;2015-12-6 12:23:34</a>
+				</div>
+			</div>
+
+			<div class="content_box">
+				<div class="awatar">
+					<div class="img" style="background:url('tpl/img/awatar.png');background-size: 100% 100%;">
+						<div class="cover">T</div>
+					</div>
+					<p>铁打的新疆人</p>
+				</div>
+				<div class="content">
+					朋友聚会聊起了高中往事，提到那时学生流行手写情书 ，往往要苦思冥想很久才写出一篇，还是现在方便，用微信发封情书分分钟的事儿。一哥们立马接口:“心碎的速度也更快!”众人问为啥？他说:“被回绝得更快了呗！”
+					<img src="tpl/img/2015107.jpg" alt="" />
+				</div>
+				<div class="info">
+					<a class="good"  href="avascript:void(0);"><i class="icon iconfont">&#xe717;</i>有用(98)</a>
+					<a class="notgood"  href="avascript:void(0);"><i class="icon iconfont">&#xe716;</i>没用(3)</a>
+					<a class="time" href="javascript:void(0);"><i class="icon iconfont">&#xe61b;</i>&nbsp;2015-12-6 12:23:34</a>
+				</div>
+			</div>
+
+			<div class="content_box">
+				<div class="awatar">
+					<div class="img" style="background:url('tpl/img/awatar.png');background-size: 100% 100%;">
+						<div class="cover">T</div>
+					</div>
+					<p>铁打的新疆人</p>
+				</div>
+				<div class="content">
+					朋友聚会聊起了高中往事，提到那时学生流行手写情书 ，往往要苦思冥想很久才写出一篇，还是现在方便，用微信发封情书分分钟的事儿。一哥们立马接口:“心碎的速度也更快!”众人问为啥？他说:“被回绝得更快了呗！”
+					<img src="tpl/img/201596.jpg" alt="" />
+				</div>
+				<div class="info">
+					<a class="good"  href="avascript:void(0);"><i class="icon iconfont">&#xe717;</i>有用(98)</a>
+					<a class="notgood"  href="avascript:void(0);"><i class="icon iconfont">&#xe716;</i>没用(3)</a>
+					<a class="time" href="javascript:void(0);"><i class="icon iconfont">&#xe61b;</i>&nbsp;2015-12-6 12:23:34</a>
+				</div>
+			</div>
+
+			
+			<!-- 页码 -->
+			<div class="page">
+				<ul>
+					<li id="p_1"><span>1</span></li>
+					<li><a href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li id="more_p"><span>...</span></li>
+					<li id="next_p"><a href="">下一页</a></li>
+					<li id="all_p">共<span>4</span>页</li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="right_content">
+			<div class="user_info">
+				<a href="index.php?c=Wish&a=wish">我要许愿</a>
+				<p>大家干赶紧来许愿吧,说不定愿望会实现呀!</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<!-- footer -->
+<div class="footer">
+	<div class="w1170 footer_box">
+	<ul class="web_link">
+		<li id="fi">友情链接</li>
+		<li><a href="">后盾网</a></li>
+		<li><a href="">知识网</a></li>
+		<li><a href="">知识库</a></li>
+	</ul>
+	<ul class="mark">
+		<li id="fi">所用的技术</li>
+		<li><a href="">HTML</a><a href="">CSS</a></li>
+		<li><a href="">JavaScript</a><a href="">CSS3</a></li>
+		<li><a href="">PHP</a></li>
+	</ul>
+	<ul id="connect">
+		<li id="fi">联系</li>
+		<li class="so"><i class="icon iconfont">&#xe65f;</i>1027820779</li>
+		<li class="so"><i class="icon iconfont">&#xe674;</i>铁打的新疆人</a></li>
+		<li class="so"><i class="icon iconfont">&#xe63b;</i>13201223537</a></li>
+	</ul>
+	<a href=""><img src="tpl/img/tarqat_logo.png" alt="" /></a>
+	<div class="link_me">联系我们</div>
+	</div>
+</div>
+</body>
+</html>

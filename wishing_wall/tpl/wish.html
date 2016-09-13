@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>知识传播-tarqat.com</title>
+    <link rel="shortcut icon" href="tpl/img/favicon.ico" />
+    <link rel="stylesheet" href="tpl/font/iconfont.css"/>
+    <link rel="stylesheet" href="tpl/css/commun.css" />
+    <link rel="stylesheet" href="tpl/css/wish.css" />
+    <script src="./tpl/js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function(){
+            //表单的提交事件
+            $("form").submit(function(){
+                // 抓取form表单的所有内容，不用挨个抓取
+                var form_data=$(this).serialize();
+                console.log(form_data);
+                // 发送异步
+                $.ajax({
+                    type:"post",
+                    url:"index.php?c=Arc&a=add",
+                    data:form_data,
+                    dataType:"json",
+                    success:function(php_data){
+                        var str = '<div class="widh_card"><div class="au">'+php_data.name+'</div><div class="content">'+php_data.content+'</div> <div class="add_time">'+php_data.time+'</div></div>';
+                        $(".widh_card:first").before(str);
+                        $("textarea[name=content]").val("");
+                    }
+                });
+                // 阻止表单提交
+                return false;
+            });
+        })
+    </script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="w1170 header_box">
+        <div class="left_log">
+            <a href="index.php"><img src="tpl/img/index_logo.png" alt="" /></a>
+            <p>知识传播</p>
+        </div>
+        <div class="right_log">
+            <?php if(!isset($_SESSION["name"])): ?>
+            <a href="index.php?c=Member&a=login" class="use">登录</a>
+            <a href="index.php?c=Member&a=reg" class="use">注册</a>
+            <?php else: ?>
+            <span>欢迎<i style="color:#26ba60;font-style: normal;">&nbsp;<?php echo $_SESSION["name"]; ?>&nbsp;</i>回来!</span>
+            <a class="out" href="index.php?c=Member&a=out">退出</a>
+            <?php endif ?>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!-- body -->
+<div class="body">
+    <div class="w1170 body_box">
+        <div class="img_bg">
+            <div class="h_t">
+                <div class="form_bg">
+                    <form action="">
+                        <table class="table">
+                            <tr>
+                                <td>你的昵称</td>
+                                <td><input name="name" class="name" value='<?php if(!isset($_SESSION["name"])): ?><?php else: ?><?php echo $_SESSION["name"]; ?><?php endif ?>' type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>许愿内容</td>
+                                <td><textarea name="content" id="text"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input class="sub" type="submit" value="好了,发布我的愿望"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="bg_cover">
+                <div>许愿墙</div>
+            </div>
+            <div class="contro">我看不下去了,我要许愿!</div>
+        </div>
+        <div class="wish_box">
+
+            <?php krsort($data); foreach ($data as $v): ?>
+            <div class="widh_card">
+                <div class="au"><?php echo $v["name"] ?></div>
+                <div class="content"><?php echo $v["content"] ?></div>
+                <div class="add_time"><?php echo $v["time"] ?></div>
+            </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!-- footer -->
+<div class="footer">
+    <div class="w1170 footer_box">
+        <ul class="web_link">
+            <li id="fi">友情链接</li>
+            <li><a href="">后盾网</a></li>
+            <li><a href="">知识网</a></li>
+            <li><a href="">知识库</a></li>
+        </ul>
+        <ul class="mark">
+            <li id="fi">所用的技术</li>
+            <li><a href="">HTML</a><a href="">CSS</a></li>
+            <li><a href="">JavaScript</a><a href="">CSS3</a></li>
+            <li><a href="">PHP</a></li>
+        </ul>
+        <ul id="connect">
+            <li id="fi">联系</li>
+            <li class="so"><i class="icon iconfont">&#xe65f;</i>1027820779</li>
+            <li class="so"><i class="icon iconfont">&#xe674;</i>铁打的新疆人</a></li>
+            <li class="so"><i class="icon iconfont">&#xe63b;</i>13201223537</a></li>
+        </ul>
+        <a href=""><img src="tpl/img/tarqat_logo.png" alt="" /></a>
+        <div class="link_me">联系我们</div>
+    </div>
+</div>
+</body>
+</html>

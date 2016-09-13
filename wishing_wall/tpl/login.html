@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>知识传播-tarqat.com</title>
+	<link rel="shortcut icon" href="tpl/img/favicon.ico" />
+	<link rel="stylesheet" href="tpl/css/commun.css" />
+	<link rel="stylesheet" href="tpl/css/login.css" />
+    <script type="text/javascript" src="tpl/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+            var code_t;
+            var name;
+            var password;
+            $("form").submit(function(){
+                if($("input[name=code]").val()==""){
+                    alert("验证码不能为空");
+                    return false;
+                }
+                if($("input[name=username]").val()==""){
+                    alert("用户名不能为空");
+                    return false;
+                }
+                if($("input[name=password]").val()==""){
+                    alert("密码不能为空");
+                    return false;
+                }
+                if(code_t!=1) {
+                    alert("验证码错误");
+                    return false;
+                }
+                if(code_t==1 && name==1 && password==1){
+                    return true;
+                }
+                return false;
+            });
+
+//            密码，名字
+            $("input[name=username]").blur(function(){
+                var username=$("input[name=username]").val();
+                if(username==""){
+                    $("input[name=username]").css({boxShadow:"#f94d30 0px 0px 2px inset"});
+                    name=0;
+                }else{
+                    $("input[name=username]").css({boxShadow:"#26BA60 0px 0px 2px inset"});
+                    name=1;
+                }
+            });
+
+            $("input[name=password]").blur(function(){
+                var username=$("input[name=password]").val();
+                if(username==""){
+                    $("input[name=password]").css({boxShadow:"#f94d30 0px 0px 2px inset"});
+                    password=0;
+                }else{
+                    $("input[name=password]").css({boxShadow:"#26BA60 0px 0px 2px inset"});
+                    password=1;
+                }
+            });
+
+
+//            验证码检测
+            $("input[name=code]").blur(function(){
+                var co=$("input[name=code]").val();
+                if(co==""){
+                    $("input[name=code]").css({boxShadow:"#f94d30 0px 0px 2px inset"});
+                }else{
+                    $.ajax({
+                        type:"post",
+                        url:"index.php?c=Member&a=check_code",
+                        data:{code:co},
+                        dataType:"text",
+                        success:function(result){
+                            if(result){
+                                $("input[name=code]").css({boxShadow:"#26BA60 0px 0px 2px inset"});
+                                code_t=1;
+                            }else{
+                                $("input[name=code]").css({boxShadow:"#f94d30 0px 0px 2px inset"});
+                            }
+                        }
+                    });
+                }
+            });
+
+
+
+        })
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="logo">
+            <a href="index.php"><img src="tpl/img/tarqat_logo.png" alt="" /></a>
+		</div>
+		<div class="form">
+			<form action="" method="post">
+				<ul> 
+					<li><input type="text" name="username" placeholder="请输入用户名" /></li>
+					<li><input type="password" name="password" placeholder="请输入密码" /></li>
+					<li id="code">
+						<input type="text" name="code" placeholder="请输入验证码" />
+						<img id="img" src="./index.php?c=Member&a=code" alt="" title="点击切换" onclick="this.src=this.src+'&rand='+Math.random()" />
+					</li>
+					<li id="sub"><input type="submit" value="提交" /></li>
+					<li id="last"><a href="index.php?c=Member&a=reg">注册</a></li>
+				</ul>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+.w1170{
+	width: 1170px;
+}
